@@ -1,0 +1,254 @@
+[gd_scene load_steps=27 format=3 uid="uid://cfn730eomtnqi"]
+
+[ext_resource type="Script" uid="uid://df4swyymc8nx2" path="res://assets/husky/husky.gd" id="1_06ig3"]
+[ext_resource type="Script" uid="uid://muuje51xfjlu" path="res://assets/main.gd" id="1_ujfqy"]
+[ext_resource type="Texture2D" uid="uid://cck4icru6icre" path="res://assets/husky/husky.png" id="2_06ig3"]
+[ext_resource type="Texture2D" uid="uid://b1chgsop5hwoy" path="res://assets/ball/ball.png" id="3_2d37k"]
+[ext_resource type="Texture2D" uid="uid://b6cnxsqwjd0m7" path="res://assets/goal/goal.png" id="3_836ik"]
+[ext_resource type="Texture2D" uid="uid://dh4hdqsyg1t65" path="res://assets/ground/ground.png" id="5_j2eim"]
+[ext_resource type="Texture2D" uid="uid://c1n77w2o7awy6" path="res://assets/leaf/leaf.png" id="7_qdlv5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j2eim"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ujfqy"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qdlv5"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tkxyu"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d37k"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_06ig3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords:x")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_db5cl"]
+resource_name = "idle"
+length = 0.5000125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords:x")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_836ik"]
+resource_name = "move"
+length = 0.40001002
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords:x")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2d37k"]
+_data = {
+&"RESET": SubResource("Animation_06ig3"),
+&"idle": SubResource("Animation_db5cl"),
+&"move": SubResource("Animation_836ik")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_836ik"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_836ik"]
+size = Vector2(60, 5)
+
+[sub_resource type="Curve" id="Curve_fphxj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0923077, 1), 0.0, 0.0, 0, 0, Vector2(0.9323078, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_vqaxa"]
+curve = SubResource("Curve_fphxj")
+
+[sub_resource type="Curve" id="Curve_vqaxa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_m5usj"]
+curve = SubResource("Curve_vqaxa")
+
+[sub_resource type="Curve" id="Curve_qdlv5"]
+_limits = [-16.0, 16.0, 0.0, 1.0]
+_data = [Vector2(0, -0.09827995), 0.0, 0.0, 0, 0, Vector2(0.064615384, 16), 0.0, 0.0, 0, 0, Vector2(0.20307694, -16), 0.0, 0.0, 0, 0, Vector2(0.30461544, 16), 0.0, 0.0, 0, 0, Vector2(0.41538465, -16), 0.0, 0.0, 0, 0, Vector2(0.5046154, 16), -97.57984, -97.57984, 0, 0, Vector2(0.62769234, -16), 0.0, 0.0, 0, 0, Vector2(0.74461544, 16), 0.0, 0.0, 0, 0, Vector2(0.74769235, 0), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="Curve" id="Curve_tkxyu"]
+_limits = [0.0, 32.0, 0.0, 1.0]
+_data = [Vector2(0, 32), 0.0, 0.0, 0, 0, Vector2(0.75, 32), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_fphxj"]
+curve_x = SubResource("Curve_qdlv5")
+curve_y = SubResource("Curve_tkxyu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tkxyu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(256, 256, 1)
+angular_velocity_min = -256.0
+angular_velocity_max = -256.0
+angular_velocity_curve = SubResource("CurveTexture_m5usj")
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_fphxj")
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_vqaxa")
+
+[node name="Main" type="Node" node_paths=PackedStringArray("_goal_area", "_label_victory", "_button_restart")]
+script = ExtResource("1_ujfqy")
+_goal_area = NodePath("Map/Goal/Area2D")
+_label_victory = NodePath("CanvasLayer/Control/Label")
+_button_restart = NodePath("CanvasLayer/Control/Button")
+
+[node name="Map" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bounds" type="StaticBody2D" parent="Map"]
+
+[node name="Bottom" type="CollisionShape2D" parent="Map/Bounds"]
+position = Vector2(0, 108)
+shape = SubResource("WorldBoundaryShape2D_j2eim")
+
+[node name="Top" type="CollisionShape2D" parent="Map/Bounds"]
+position = Vector2(0, -108)
+shape = SubResource("WorldBoundaryShape2D_ujfqy")
+
+[node name="Left" type="CollisionShape2D" parent="Map/Bounds"]
+position = Vector2(-192, 0)
+shape = SubResource("WorldBoundaryShape2D_qdlv5")
+
+[node name="Right" type="CollisionShape2D" parent="Map/Bounds"]
+position = Vector2(192, 0)
+shape = SubResource("WorldBoundaryShape2D_tkxyu")
+
+[node name="Ground" type="Sprite2D" parent="Map"]
+z_index = -16
+texture_repeat = 2
+texture = ExtResource("5_j2eim")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="Husky" type="CharacterBody2D" parent="Map"]
+motion_mode = 1
+script = ExtResource("1_06ig3")
+move_speed = 64.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Husky"]
+shape = SubResource("CircleShape2D_2d37k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Husky"]
+texture = ExtResource("2_06ig3")
+offset = Vector2(0, -8)
+hframes = 8
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Husky"]
+libraries = {
+&"": SubResource("AnimationLibrary_2d37k")
+}
+
+[node name="Ball" type="RigidBody2D" parent="Map"]
+position = Vector2(32, 0)
+linear_damp = 2.0
+angular_damp = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Ball"]
+shape = SubResource("CircleShape2D_836ik")
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Ball"]
+texture = ExtResource("3_2d37k")
+
+[node name="Goal" type="StaticBody2D" parent="Map"]
+position = Vector2(0, -43)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Goal"]
+polygon = PackedVector2Array(-34, 12, -30, 12, -30, 0, 30, 0, 30, 12, 34, 12, 34, -4, -34, -4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Map/Goal"]
+texture = ExtResource("3_836ik")
+
+[node name="Area2D" type="Area2D" parent="Map/Goal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Goal/Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_836ik")
+
+[node name="Camera2D" type="Camera2D" parent="Map"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Map"]
+z_index = 16
+amount = 72
+texture = ExtResource("7_qdlv5")
+lifetime = 8.0
+preprocess = 4.0
+visibility_rect = Rect2(-256, -256, 512, 512)
+process_material = SubResource("ParticleProcessMaterial_tkxyu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "VICTORY ACHIEVED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
