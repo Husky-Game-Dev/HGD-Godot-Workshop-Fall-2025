@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://cfn730eomtnqi"]
 
-[ext_resource type="Script" uid="uid://df4swyymc8nx2" path="res://assets/husky/husky.gd" id="1_06ig3"]
-[ext_resource type="Script" uid="uid://muuje51xfjlu" path="res://assets/main.gd" id="1_ujfqy"]
+[ext_resource type="Script" uid="uid://df4swyymc8nx2" path="res://scripts/husky.gd" id="1_06ig3"]
+[ext_resource type="Script" uid="uid://muuje51xfjlu" path="res://scripts/main.gd" id="1_ujfqy"]
 [ext_resource type="Texture2D" uid="uid://cck4icru6icre" path="res://assets/husky/husky.png" id="2_06ig3"]
 [ext_resource type="Texture2D" uid="uid://b1chgsop5hwoy" path="res://assets/ball/ball.png" id="3_2d37k"]
 [ext_resource type="Texture2D" uid="uid://b6cnxsqwjd0m7" path="res://assets/goal/goal.png" id="3_836ik"]
